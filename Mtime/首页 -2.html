@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>时光电影网</title>
+
+<link rel='icon' href="favicon.ico" type="image/x-icon">
+<style type="text/css">
+        * {  padding: 0;  margin: 0;  }
+        ul, ol {  list-style: none;  }
+        .bannerbox {  width: 100%;  height: 360px;  margin: auto;
+            position: relative;  }
+        .bannerbox ul li, .bannerbox ol, .bannerbox .arrow {
+	position: absolute;
+	width: 100%;
+}
+        .bannerbox ul li {  display: none;  }
+        .bannerbox ol {
+	width: 214px;
+	left: 50%;
+	bottom: 30px;
+	margin-left: -80px;
+}
+        .bannerbox ol li {
+	width: 40px;
+	color: #FFF;
+	cursor: pointer;
+	font-size: 30px;
+	text-align: center;
+	float: left;
+}
+        .bannerbox .arrow {  width: 100%;  top: 50%;  display: none;
+            margin-top: -20px;  text-align: center;  color: aliceblue;
+            font-weight: bold;  }
+        .bannerbox .prev {  width: 30px;  height: 40px;  cursor: pointer;
+            line-height: 40px;  background-color: rgba(72, 255, 203, 0.5);
+            float: left;  }
+        .bannerbox .next {  width: 30px;  height: 40px;  cursor: pointer;
+            line-height: 40px;  background-color: rgba(72, 255, 203, 0.5);
+            float: right;  }
+        .showtip {  color: #360 !important;  }
+    #welcome {
+	font-family: "隶书";
+	font-size: 40px;
+	color: #CCC;
+}
+#JRRD {
+	font-family: "隶书";
+	font-size: 36px;
+	color: #000;
+}
+#biaoti {
+	font-family: "黑体";
+	font-weight: bold;
+	font-size: 24px;
+	color: #000;
+}
+#neirong {
+	font-family: "楷体";
+	font-size: 16px;
+	color: #666;
+}
+#JRRD {
+	font-family: "隶书";
+}
+#qingdenglu {
+	font-family: "隶书";
+	font-size: xx-large;
+	color: #F00;
+	font-weight: bold;
+}
+#viewmore {
+    text-align: center;
+	font-family: "隶书";
+	font-size: 36px;
+    padding-top: 8px;
+	
+}
+#viewmore {
+	color: #900;
+}
+a:link {
+	text-decoration: none;
+	color: #3F9;
+}
+a:visited {
+	text-decoration: none;
+	color: #060;
+}
+a:hover {
+	text-decoration: underline;
+	color: #FF0;
+}
+a:active {
+	text-decoration: none;
+	color: #FF0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: black;
+}
+
+#tou {
+    width: 1150px;
+    height: 100%;
+    background-color: blue;
+}
+
+#shukuang {
+    width: 1150px;
+    height: 40px;
+    background-color: rgb(29,39,54);
+}
+
+#tou .shou {
+    width: 1153px;
+    height: 40px;
+    background-color: rgb(29,39,54);
+    margin: 0 auto;
+
+}
+
+#tou .shou .diyi {
+    height: 40px;
+    width: 575px;
+    background-color: rgb(29,39,54);
+    float: left;
+    line-height: 45px;
+}
+
+#tou .shou .dier {
+    height: 40px;
+    width: 575px;
+    background-color: rgb(29,39,54);
+    float: right;
+    line-height: 35px;
+}
+
+.diyi a {
+	color: #FF0;
+}
+.dier a {
+	color: #FF0;
+}
+</style>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+$(document).ready(function () {
+            //定时器自动切换
+            var i = 0;
+            var timer;
+            var isClick = 0;
+            timer = setInterval(dh, 3000);
+            function dh() {
+                i++;
+                i = i > 4 ? 0 : i;
+                $(".bannerbox ul li").eq(i).stop(true, true).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                $("ol li").eq(i).addClass("showtip").siblings().removeClass("showtip");
+            }
+            //箭头显示/隐藏
+            $(".bannerbox").hover(function () {
+                clearInterval(timer);
+                $(".arrow").show();
+            }, function () {
+                if (!isClick) {
+                    timer = setInterval(dh, 3000);
+                }
+                isClick = 0;
+                $(".arrow").hide();
+            });
+            //next点击
+            $(".next").click(function () {
+                isClick = 1;
+                clearInterval(timer);
+                dh();
+                timer = setInterval(dh, 3000);
+            });
+            //prev点击
+            $(".prev").click(function () {
+                isClick = 1;
+                clearInterval(timer);
+                i--;
+                i = i < 0 ? 3 : i;
+                $(".bannerbox ul li").stop(true, true).eq(i).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                $("ol li").eq(i).addClass("showtip").siblings().removeClass("showtip");
+                timer = setInterval(dh, 3000);
+            });
+            //下标切换
+            $("ol li").mouseover(function () {
+                isClick = 1;
+                clearInterval(timer);
+                i = $(this).index();
+                isClick = 1;
+                $("ol li").eq(i).addClass("showtip").siblings("ol li").removeClass("showtip");
+                $(".bannerbox ul li").stop(true, true).eq(i).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                timer = setInterval(dh, 3000);
+            });
+        })
+    </script>
+</head>
+
+<body oncontextmenu="window.event.returnvalue=false; return false;"><div id="tou" style="margin: auto;">
+    <div id="shukuang">
+        <div class="shou">
+            <div class="diyi">
+            	<a href="#" style="margin-right: 60px;"></a>
+                <a href="首页 -2.html" style="margin-right: 20px;">首页</a>
+                <a href="查看更多.html" style="margin-right: 20px;">购票</a>
+                <a href="#" style="margin-right: 20px;">发现</a>
+                <a href="#" style="margin-right: 20px;">社区</a>
+                
+            </div>
+<div class="dier">
+                <a href="#" style="margin-right: 100px;"></a>
+                <a href="用户登录.html" style="margin-right: 20px;">登录</a>
+                <a href="申请注册.html" style="margin-right: 20px;">注册</a>
+                <a href="#" style="margin-right: 20px;">English</a>
+                <input type="text" style="width: 80px;height: 23px;position: relative;top:-1px;left:138px;">
+    <input type="image" src="images/1.bmp"
+                       style="width: 30px;height: 27px;position: relative;top:8px;left:130px;">
+</div><div>
+
+<table width="100%" border="0">
+    <tr>
+      <td height="88" colspan="4" bgcolor="#1D2736" id="welcome"><a href="#" style="margin-right: 60px;"></a>welcome<a href="#" style="margin-right: 330px;"></a><img src="images/mtimelogo.png"ondragstart="return false;" width="117" height="36" align="absmiddle" /></td>
+    </tr>
+    <tr>
+      <td height="360" colspan="5"><div class="bannerbox">
+      <ul>
+        <li style="display: block">
+            <a href="javascript:;"><img src="images/110657.10306405.jpg" alt="" width="100%" height="360"></a></li>
+        <li><a href="javascript:;"><img src="images/084333.77642035.jpg" alt="" width="100%" height="360"></a></li>
+        <li><a href="javascript:;"><img src="images/093743.24127047.jpg" alt="" width="100%" height="360"></a></li>
+        <li><a href="javascript:;"><img src="images/091408.46681345.jpg" alt="" width="100%" height="360"></a></li>
+        <li><a href="javascript:;"><img src="images/085843.55639995.jpg" alt="" width="100%" height="360"></a></li>
+    </ul>
+    <ol>
+        <li class="showtip">●</li>
+        <li>●</li>
+        <li>●</li>
+        <li>●</li>
+        <li>●</li>
+    </ol>
+    <div class="arrow">
+        <div class="prev">＜</div>
+        <div class="next">＞</div>
+    </div>
+</div></td>
+    </tr><tr>
+      <td height="100" colspan="4" align="center" valign="middle"><h4 align="center" id="JRRD" >今日热点</h4></td>
+    </tr> <tr>
+      <td height="50" colspan="4" align="center"><a href="" >时光对话</a>&nbsp;&nbsp;<a href="" >产业聚焦</a>&nbsp;&nbsp;<a href="" >电视情报</a>&nbsp;&nbsp;<a href="" >全球拾趣</a><hr align="center" width="100%" /></td>
+    </tr> <tr>
+      <td width="25%" height="249"><div align="center"><a href="首页 -2.html"><img src="images/114257.31251638.jpg"ondragstart="return false;" width="289" height="140" /></a><br>
+        <span id="biaoti">《变形金刚5》预告出炉</span><br>
+      <span id="neirong">擎天柱怒砍大黄蜂 "穿越"人类历史瞬间</span></div></td>
+      <td width="25%" height="249"><div align="center"><a href="首页 -2.html"><img src="images/145656.44827693.jpg"ondragstart="return false;" width="285" height="140" /></a><br>
+        <span id="biaoti">《巴黎最后的探戈》完美</span><br>
+      <span id="neirong">完美再现巴黎探戈</span></div></td>
+      <td width="25%" height="249"><div align="center"><a href="首页 -2.html"><img src="images/142259.54235124.jpg"ondragstart="return false;" width="285" height="140" /></a><br>
+        <span id="biaoti">《超感猎杀》第二季</span><br>
+      <span id="neirong">超感组面临生存危机圣诞特别篇</span></div></td>
+      <td width="25%" height="249"><div align="center"><a href="首页 -2.html"><img src="images/114204.53583757.jpg"ondragstart="return false;" width="285" height="140" /></a><br>
+        <span id="biaoti">Netflix原创《幽冥》</span><br>
+      <span id="neirong">神秘幽灵杀人于无形 刀枪不入</span></div></td>
+    </tr>
+    <tr>
+      <td width="25%" height="249"><div align="center"><a href="首页 -2.html"><img src="images/112217.73630668.jpg"ondragstart="return false;" width="285" height="140" /></a><br>
+        <span id="biaoti">《海洋奇缘》来袭</span><br>
+      <span id="neirong">新片乏力老片势头强 《神奇动物》上榜</span></div></td>
+      <td width="25%" height="249"><div align="center"><a href="首页 -2.html"><img src="images/111938.29355819.jpg"ondragstart="return false;" width="285" height="140" /></a><br>
+        <span id="biaoti">《侠盗一号》曝光</span><br>
+      <span id="neirong">K-2SO卖萌式担忧 故事或与星战8有关</span></div></td>
+      <td width="25%" height="249"><div align="center"><a href="首页 -2.html"><img src="images/093347.74345831.jpg"ondragstart="return false;" width="285" height="140" /></a><br>
+        <span id="biaoti">《银河护卫队2》</span><br>
+      <span id="neirong">小格鲁特展现惊人杀伤力 毁灭者大战</span></div></td>
+      <td width="25%" height="249"><div align="center">
+        <p><a href="首页 -2.html"><img src="images/115647.44390330.jpg"ondragstart="return false;" width="285" height="140" /></a><br>
+          <span id="biaoti">《蜘蛛侠：归来》新战服</span><br>
+          <span id="neirong">由钢铁侠史塔克设计 致敬初代蜘蛛侠</span>      </p>
+      </div></td>
+    </tr>
+    
+    <tr>
+      <td height="66" colspan="4"><p id="viewmore"><a href="查看更多.html" id="viewmore">查看更多</a></p></td>
+    </tr>
+  </table>
+  <table width="1263px" border="0">
+    <tr><td width="1263px" height="90px" border="0"><img src="images/0f00054ob5FE39MVemQxk6.jpg"ondragstart="return false;" width="1200" height="90" /></td></tr>
+  </table>
+</div></body>
+</html>

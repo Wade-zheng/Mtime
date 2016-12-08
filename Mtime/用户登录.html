@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户登录</title>
+<link rel='icon' href="favicon.ico" type="image/x-icon">
+<link type="image/x-icon" href="http://static1.mtime.cn/favicon.ico" rel="icon">
+<style type="text/css">
+#用户登录 {
+	font-family: "隶书";
+	font-size: 50px;
+	font-weight: bold;
+	color: #CCC;
+}
+#前部 {
+	font-family: "楷体";
+	font-weight: bold;
+	font-size: 36px;
+	color: #999;
+}
+#星号 {
+	font-family: "隶书";
+	color: #0F0;
+}
+#前部 {
+	font-family: "楷体";
+}
+#星号 {
+	font-family: "隶书";
+}
+#xingming_ap {
+	position: absolute;
+	width: 368px;
+	height: 37px;
+	z-index: 1;
+	left: 945px;
+	top: 108px;
+	color: #999;
+	font-size: 16px;
+	visibility: hidden;
+}
+#mima_ap {
+	position: absolute;
+	width: 376px;
+	height: 30px;
+	z-index: 2;
+	left: 862px;
+	top: 175px;
+	color: #999;
+	font-size: 16px;
+	visibility: hidden;
+}
+.txt1 {
+	background-color: #1D2736;
+	height: 100%;
+	width: 50%;
+	font-size: 36px;
+	color: #FFF;
+}
+</style>
+<script type="text/javascript">
+function MM_showHideLayers() { //v9.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) 
+  with (document) if (getElementById && ((obj=getElementById(args[i]))!=null)) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function MM_goToURL() { //v3.0
+  var i, args=MM_goToURL.arguments; document.MM_returnValue = false;
+  for (i=0; i<(args.length-1); i+=2) eval(args[i]+".location='"+args[i+1]+"'");
+}
+</script>
+</head>
+
+<body oncontextmenu="window.event.returnvalue=false; return false;">
+<form id="form1" name="form1" method="post" action="">
+  <table width="100%" border="0">
+    <tr>
+      <td height="88" colspan="2" align="center" bgcolor="#990000" id="用户登录">用户登录</td>
+    </tr>
+    <tr>
+      <td width="50%" height="55" align="right" bgcolor="#990000" id="前部">姓名：<span id="星号">*</span></td>
+      <td width="50%"><label for="xingming"></label>
+      <input name="xingming" type="text" id="xingming" onfocus="MM_showHideLayers('xingming_ap','','show')" onblur="MM_showHideLayers('xingming_ap','','hide')" size="30" maxlength="40" />
+      <div id="xingming_ap">*6~30个字符，一个汉字占2个字符，不区分大小写以字母、数字、下划线开始，中间允许有空格。</div></td>
+    </tr>
+    <tr>
+      <td width="50%" height="55" align="right" bgcolor="#990000" id="前部">密码：<span id="星号">*</span></td>
+      <td><label for="mima"></label>
+      <input name="mima" type="password" id="mima" onfocus="MM_showHideLayers('mima_ap','','show')" onblur="MM_showHideLayers('mima_ap','','hide')" size="20" maxlength="30" />
+      <div id="mima_ap">*以字母、数字、下划线开始，中间允许有空格。</div></td>
+    </tr>
+    <tr>
+      <td height="30" colspan="2"><hr width="100%" noshade="noshade" /></td>
+    </tr>
+    <tr>
+      <td width="50%" height="36" align="center"><input name="button" type="button" class="txt1" id="button" onclick="MM_goToURL('parent','首页 -2.html');return document.MM_returnValue" value="登录" /></td>
+      <td height="30" align="center"><input name="button2" type="button" class="txt1" id="button2" onclick="MM_goToURL('parent','申请注册.html');return document.MM_returnValue" value="注册" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
